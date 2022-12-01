@@ -11,6 +11,6 @@ const livroSchema = new mongoose.Schema(
 )
 
 // se náo tivesse criado ele criaria sozinho
-const livros = mongoose.model(`livros`, livroSchema)
+const livros = mongoose.model(`livro`, livroSchema)
 
 module.exports = livros

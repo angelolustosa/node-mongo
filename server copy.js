@@ -20,10 +20,10 @@ db.once("open", () => {
     console.log('Conexao com o banco realizada com sucesso')
 })
 
-
-/* const routes = require(`./routes/index`)
+const livros = require(`./models/Livro`)
+const routes = require(`./routes/index`)
 routes(app)
- */
+
 //para o axios funcionar
 const cors = require('cors')
 app.use(cors())
@@ -55,18 +55,12 @@ app.use(express.json())
     //res.sendFile(__dirname + `/index_params.html`)
 }) */
 
-app.get('/', (req, res) => {
-    res.status(200).send('Servidor no ar');
-})
-
-const livros = require(`./models/Livro`)
-app.get(`/livros`, (req, res) => {
+/* app.get(`/livros`, (req, res) => {
     livros.find((err, livros) => {
-        console.log(livros)
         res.status(200).json(livros)
     })
 
-})
+}) */
 
 app.get(`/quizzes/:id`, (req, res) => {
     // mostrar req
