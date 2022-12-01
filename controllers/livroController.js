@@ -13,4 +13,4 @@ class LivroController {
 
 }
 
-//module.exports = LivroController
+module.exports = LivroController

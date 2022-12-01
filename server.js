@@ -2,28 +2,25 @@
 const express = require(`express`)
 const app = express()
 const db = require(`./config/dbConnect`)
+
 // https://devpleno.com/morgan
 const morgan = require('morgan')
-
 //app.use(morgan('combined'))
 /* 
 127.0.0.1 - - [17/Nov/2022:20:07:52 +0000] "GET /livros HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
 127.0.0.1 - - [17/Nov/2022:20:07:52 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://127.0.0.1:3000/livros" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36"
 */
 app.use(morgan('tiny'))
-/* 
 
-*/
-
-//db.on("error", console.log.bind(console, `Erro de conexao`))
+db.on("error", console.log.bind(console, `Erro de conexao`))
 db.once("open", () => {
     console.log('Conexao com o banco realizada com sucesso')
 })
 
 
-/* const routes = require(`./routes/index`)
+const routes = require(`./routes/index`)
 routes(app)
- */
+
 //para o axios funcionar
 const cors = require('cors')
 app.use(cors())
@@ -47,15 +44,7 @@ app.use(
 
 app.use(express.json())
 
-//rota inicial / endopoint
-/* app.get(`/`, (req, res) => {
-    // mostrar req
-
-    res.json({ message: `Oi Express` })
-    //res.sendFile(__dirname + `/index_params.html`)
-}) */
-
-app.get('/', (req, res) => {
+/* app.get('/', (req, res) => {
     res.status(200).send('Servidor no ar');
 })
 
@@ -66,7 +55,7 @@ app.get(`/livros`, (req, res) => {
         res.status(200).json(livros)
     })
 
-})
+}) */
 
 app.get(`/quizzes/:id`, (req, res) => {
     // mostrar req
